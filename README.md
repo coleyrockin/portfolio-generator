@@ -1,2 +1,3 @@
-# portfolio-generator
+# Portfolio Generator
+
 Create portfolio using node.js
