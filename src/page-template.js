@@ -12,6 +12,7 @@ const generateAbout = aboutText => {
   `;
 };
 
+// create the projects section
 const generateProjects = projectsArr => {
   return `
     <section class="my-3" id="portfolio">
@@ -25,7 +26,7 @@ const generateProjects = projectsArr => {
             <h3 class="portfolio-item-title text-light">${name}</h3>
             <h5 class="portfolio-languages">
               Built With:
-              ${languages.join(', ')}
+              ${languages.map(language => language).join(',')}
             </h5>
             <p>${description}</p>
             <a href="${link}" class="btn"><i class="fab fa-github mr-2"></i>View Project on GitHub</a>
@@ -55,6 +56,7 @@ const generateProjects = projectsArr => {
   `;
 };
 
+// export function to generate entire page
 module.exports = templateData => {
   // destructure page data by section
   const { projects, about, ...header } = templateData;
@@ -62,7 +64,6 @@ module.exports = templateData => {
   return `
   <!DOCTYPE html>
   <html lang="en">
-
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -72,7 +73,7 @@ module.exports = templateData => {
     <link href="https://fonts.googleapis.com/css?family=Public+Sans:300i,300,500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
   </head>
-
+  
   <body>
     <header>
       <div class="container flex-row justify-space-between align-center py-3">
@@ -85,8 +86,8 @@ module.exports = templateData => {
       </div>
     </header>
     <main class="container my-5">
-    ${generateAbout(about)}
-    ${generateProjects(projects)}
+      ${generateAbout(about)}
+      ${generateProjects(projects)}
     </main>
     <footer class="container text-center py-3">
       <h3 class="text-dark">&copy; ${new Date().getFullYear()} by ${header.name}</h3>
